@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Building
   - Unit
+  - City
   layers:
   - Default
   - TransparentFX
