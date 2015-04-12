@@ -15,6 +15,12 @@ TagManager:
   - City
   - IncomeManager
   - ConstructionYard
+  - HomeBaseDrop
+  - EnemyUnit
+  - EnemyUnitTank
+  - EnemyUnitPlane
+  - PlayerUnitTank
+  - PlayerUnitPlane
   layers:
   - Default
   - TransparentFX

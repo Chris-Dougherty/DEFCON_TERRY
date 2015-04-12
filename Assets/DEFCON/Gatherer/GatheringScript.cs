@@ -54,7 +54,7 @@ public class GatheringScript : MonoBehaviour {
 		{
 			if (HasItem)
 			{
-			CameraIncome.GetComponent<Income>().income += 1;
+			CameraIncome.GetComponent<Income>().Add(50);
 			HasItem = false;
 			}
 		}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ResourceNode : MonoBehaviour {
 
-	public int NodeHealth = 10;
+	public int NodeHealth = 100;
 	Vector3 StartPos;
 	//public NavMeshAgent Agent;
 	//public GameObject Node;

@@ -22,7 +22,8 @@ public class Income : MonoBehaviour {
 	//attach to any actions that cost resources
 	public void Spend(int cost)
 	{
-		income -= cost;
+		if (income >= cost)
+            income -= cost;
 	}
 
 	// Update is called once per frame
