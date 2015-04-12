@@ -7,6 +7,8 @@ public class TransportUnit : MonoBehaviour {
     // Player camera
     private Camera camera;
 
+    public int TransportIncome = 1000;
+
     // Health I guess
     [SerializeField]
     private int health;
@@ -49,6 +51,8 @@ public class TransportUnit : MonoBehaviour {
 
     public GroupManager Group;
 
+    public GameObject IncomeMan;
+
     // Animator
     //public Animator anim;
 
@@ -69,6 +73,7 @@ public class TransportUnit : MonoBehaviour {
         {
             Cities.Add(city);
         }
+        IncomeMan = GameObject.FindGameObjectWithTag("IncomeManager");
     }
 
     void FixedUpdate()
@@ -126,6 +131,7 @@ public class TransportUnit : MonoBehaviour {
         float distance = Vector3.Distance(transform.position, Home.transform.position);
         if (distance <= range)
         {
+            IncomeMan.GetComponent<Income>().Add(TransportIncome);
             HasHumans = false;
         }
     }
