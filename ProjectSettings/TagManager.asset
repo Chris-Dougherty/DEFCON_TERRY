@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackRange
+  - IndiaBase
+  - HomeBase
+  - Resource
+  - PlayerUnit
+  - Ground
+  - Building
+  - Unit
+  - City
+  - IncomeManager
   layers:
   - Default
   - TransparentFX

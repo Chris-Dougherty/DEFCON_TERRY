@@ -14,23 +14,27 @@ public class MapControl : MonoBehaviour
     {
         Vector3 newPos = transform.localPosition;
 
-        // Keyboard Input
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            newPos.z += ScrollMultiplier;
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            newPos.z -= ScrollMultiplier;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            newPos.x -= ScrollMultiplier;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            newPos.x += ScrollMultiplier;
-        }
+        newPos.z += (Input.GetAxis("Vertical") * ScrollMultiplier);
+
+        newPos.x += (Input.GetAxis("Horizontal") * ScrollMultiplier);
+
+        //// Keyboard Input
+        //if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        //{
+        //    newPos.z += ScrollMultiplier;
+        //}
+        //if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        //{
+        //    newPos.z -= ScrollMultiplier;
+        //}
+        //if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        //{
+        //    newPos.x -= ScrollMultiplier;
+        //}
+        //if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        //{
+        //    newPos.x += ScrollMultiplier;
+        //}
 
         transform.localPosition = newPos;
     }
@@ -39,7 +43,7 @@ public class MapControl : MonoBehaviour
     {
         Vector3 newPos = transform.localPosition;
 
-        newPos.y += (Input.GetAxisRaw("Mouse ScrollWheel") * ZoomMultiplier);
+        newPos.y += (-Input.GetAxisRaw("Mouse ScrollWheel") * ZoomMultiplier);
 
         transform.localPosition = newPos;
     }
