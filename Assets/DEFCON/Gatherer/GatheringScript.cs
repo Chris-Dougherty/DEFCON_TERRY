@@ -21,7 +21,7 @@ public class GatheringScript : MonoBehaviour {
 		HomeBase = GameObject.FindGameObjectWithTag ("HomeBase");
 		DeadBodyResource = GameObject.FindGameObjectWithTag ("Resource");
 
-		CameraIncome = Camera.main.gameObject;
+		CameraIncome = GameObject.FindGameObjectWithTag("IncomeManager");
 	}
 
 	void GoHome()

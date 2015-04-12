@@ -86,7 +86,7 @@ public class TankUnit : MonoBehaviour {
     protected void CheckSelected()
     {
         // Only check if unit is on screen
-        if (GetComponent<Renderer>().isVisible && Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             // Get Camera view and use selection box
             Vector3 camPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -120,11 +120,11 @@ public class TankUnit : MonoBehaviour {
         // Set visuals if unit is selected or not
         if (Selected)
         {
-            GetComponent<Renderer>().material.color = Color.green;
+            //GetComponent<Renderer>().material.color = Color.green;
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.blue;
+            //GetComponent<Renderer>().material.color = Color.blue;
         }
     }
 
