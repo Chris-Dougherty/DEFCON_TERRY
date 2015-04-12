@@ -4,11 +4,11 @@ using System.Collections;
 
 public class BasicTurret : MonoBehaviour {
 	public int Health = 3;
-	Vector3 StartPos;
+	public Vector3 StartPos;
+	public Vector3 BulletPos;
 	bool CanShoot = true;
 	bool IsShot = false;
 	float Timer = 0;
-
 	public GameObject Bullet;
 	public GameObject PlayerTeamShip;
 	public GameObject AttackRange;
@@ -17,7 +17,9 @@ public class BasicTurret : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		StartPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		BulletPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		Bullet = GetComponent <GameObject> ();
+		PlayerTeamShip = GetComponent <GameObject> ();
 	
 	}
 
@@ -27,29 +29,33 @@ public class BasicTurret : MonoBehaviour {
 		if (Health <= 0)
 			Destroy (this.gameObject);
 	}
+
+ 	public float Lerp(float value1, float value2, float amount)
+	{
+		return (value1 + (value2 - value1) * amount);
+	}
+
 	void Shoot(GameObject PlayerTeamShip)
 	{
+
 		if (CanShoot) 
 		{
 				IsShot = true;
 				if (IsShot == true && Timer > 2) 
 				{
-				Bullet.
+
 				CanShoot = false;
 				Timer = 0;
 				}
 		}
 	}
-	void HitTarget(Collision c)
+
+	void LerpToTarget(Collision c)
 	{
-		if (c.gameObject.tag == "PlayerTeamShip") 		
-			Destroy (Bullet.gameObject);
+
+		//N = (BulletPos.x - c.transform.position.x)/(BulletPos.y - c.transform.position.y);
 	}
-	void InAttackRange(Collision d)
-	{
-		if (d.gameObject.tag == "AttackRange")
-			Shoot ();
-	}
+
 
 	// Detect for combat
 	void DetectOthers()
@@ -61,9 +67,9 @@ public class BasicTurret : MonoBehaviour {
 		// Detect unit and shoot if enemy
 		for (int i = 0; i < hits.Length; i++)
 		{
-			if (hits[i].gameObject.tag == "PlayerTeamShip")
+			if (hits[i].gameObject.tag == "PlayerUnit")
 			{
-				Shoot ("PlayerTeamShip");
+				//Shoot ("PlayerUnit");
 
 
 				//NextFire = Time.time + FireRate;

@@ -13,7 +13,6 @@ public class GatheringScript : MonoBehaviour {
 	public NavMeshAgent Agent;
 	public GameObject DeadBodyResource;
 	public GameObject HomeBase;
-
 	public GameObject CameraIncome;
 
 	void Start () {

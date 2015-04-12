@@ -266,8 +266,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 3
+  StartPos: {x: 0, y: 0, z: 0}
+  BulletPos: {x: 0, y: 0, z: 0}
   Bullet: {fileID: 211455515}
-  PlayerTeamShip: {fileID: 0}
+  PlayerTeamShip: {fileID: 1207755249}
   AttackRange: {fileID: 1468606841}
 --- !u!23 &477901271
 MeshRenderer:
@@ -598,8 +600,8 @@ GameObject:
   - 135: {fileID: 1207755251}
   - 23: {fileID: 1207755250}
   m_Layer: 0
-  m_Name: PlayerTeamShip
-  m_TagString: Untagged
+  m_Name: PlayerUnit
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1005,8 +1007,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1915037263}
   m_Enabled: 1
   m_Radius: 1
-  m_Speed: 15
-  m_Acceleration: 15
+  m_Speed: 25
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
@@ -1083,7 +1085,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1915037263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .270000011, y: 4.88000011, z: 0}
+  m_LocalPosition: {x: -39.0999985, y: 4.9000001, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
