@@ -4,16 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - IndiaBase
-  - HomeBase
-  - Resource
-=======
-  - PlayerUnit
-  - Ground
-  - Building
-  - Unit
->>>>>>> 3a9e13a9c564357066abd27e37f74403fc6dedc4
+  - AttackRange
   layers:
   - Default
   - TransparentFX

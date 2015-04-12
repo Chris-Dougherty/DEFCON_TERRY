@@ -4,13 +4,13 @@ using System.Collections;
 
 
 public class GatheringScript : MonoBehaviour {
-	int Health = 100;
+	int Health = 10;
 
 
 	public bool HasItem = false;
 
 	Vector3 StartPos;
-	public NavMeshAgent agent;
+	public NavMeshAgent Agent;
 	public GameObject DeadBodyResource;
 	public GameObject HomeBase;
 
@@ -18,7 +18,7 @@ public class GatheringScript : MonoBehaviour {
 
 	void Start () {
 		StartPos = new Vector3 (transform.position.x,transform.position.y,transform.position.z);
-		agent = GetComponent<NavMeshAgent> ();
+		Agent = GetComponent<NavMeshAgent> ();
 		HomeBase = GameObject.FindGameObjectWithTag ("HomeBase");
 		DeadBodyResource = GameObject.FindGameObjectWithTag ("Resource");
 
@@ -28,13 +28,13 @@ public class GatheringScript : MonoBehaviour {
 	void GoHome()
 	{
 	
-		agent.SetDestination (HomeBase.transform.position);
+		Agent.SetDestination (HomeBase.transform.position);
 	}
 
 	void Gather()
 	{
-
-		agent.SetDestination (DeadBodyResource.transform.position);
+		if (DeadBodyResource != null)
+			Agent.SetDestination (DeadBodyResource.transform.position);
 
 	}
 
@@ -43,15 +43,10 @@ public class GatheringScript : MonoBehaviour {
 	void Update () 
 	{
 		if (!HasItem) 		
-			{
 			Gather ();
-			}
-
+			
 		if (HasItem)
-			{
 			GoHome ();
-			}
-
 	}
 
 	void OnCollisionEnter(Collision c)
@@ -60,13 +55,14 @@ public class GatheringScript : MonoBehaviour {
 		{
 			if (HasItem)
 			{
-			CameraIncome.GetComponent<Income>().income += 5;
+			CameraIncome.GetComponent<Income>().income += 1;
 			HasItem = false;
 			}
 		}
 
 		if (c.gameObject.tag == "Resource") 
 		{
+			c.gameObject.GetComponent<ResourceNode>().Depleted();
 			HasItem = true;
 		}
 	}
