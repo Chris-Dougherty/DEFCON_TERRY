@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 public class TransportUnit : MonoBehaviour {
@@ -36,6 +37,13 @@ public class TransportUnit : MonoBehaviour {
         }
     }
 
+    public bool HasHumans;
+
+    [SerializeField]
+    public List<GameObject> Cities;
+    public GameObject Home;
+    public GameObject CurrentTarget;
+
     // Navmesh
     public NavMeshAgent Agent;
 
@@ -56,6 +64,11 @@ public class TransportUnit : MonoBehaviour {
         Group = FindObjectOfType<GroupManager>();
         Group.DeactiveSelected.Add(this.gameObject);
         Health = MaxHealth;
+        Home = GameObject.FindGameObjectWithTag("HomeBase");
+        foreach (var city in GameObject.FindGameObjectsWithTag("City"))
+        {
+            Cities.Add(city);
+        }
     }
 
     void FixedUpdate()
@@ -67,8 +80,54 @@ public class TransportUnit : MonoBehaviour {
     void Update()
     {
         CheckSelected();
+        CheckHumans();
         //CheckMovement();
         //DoAnims();
+    }
+
+    void CheckHumans()
+    {
+        if (HasHumans)
+            DropOffHumans();
+
+        if (!HasHumans)
+            CollectHumans();
+    }
+
+    void CollectHumans()
+    {
+        if (!Agent.hasPath)
+        {
+            int i = Random.Range(0, Cities.Count);
+            if (Cities[i].GetComponentInParent<Cities>().Population > 0)
+            {
+                Agent.SetDestination(Cities[i].transform.position);
+                CurrentTarget = Cities[i];
+            }
+        }
+
+        float range = (1f * 1f);
+        float distance = Vector3.Distance(transform.position, CurrentTarget.transform.position);
+        if (distance <= range)
+        {
+            CurrentTarget.GetComponentInParent<Cities>().LosePopulation(500000);
+            HasHumans = true;
+        }
+    }
+
+    void DropOffHumans()
+    {
+        if (!Agent.hasPath)
+        {
+            Agent.SetDestination(Home.transform.position);
+        }
+
+        float range = (1f * 1f);
+        float distance = Vector3.Distance(transform.position, Home.transform.position);
+        if (distance <= range)
+        {
+            HasHumans = false;
+        }
     }
 
     void DoAnims()

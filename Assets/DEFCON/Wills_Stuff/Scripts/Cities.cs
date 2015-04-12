@@ -19,9 +19,12 @@ public class Cities : MonoBehaviour {
         PopText.text = Population.ToString();
 	}
 
-    void LosePopulation(int taken)
+    public void LosePopulation(int taken)
     {
-        if(Population > 0)
+        if (Population > 0)
             Population -= taken;
+
+        if (Population <= 0)
+            Population = 0;
     }
 }
