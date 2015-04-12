@@ -26,7 +26,7 @@ public class HarvestorMaker : MonoBehaviour
 		if (IncomeMan.GetComponent<Income>().income >= 0 + HCost)
 		{
 			GameObject clone;
-			clone = Instantiate(HUnit, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 1), Quaternion.identity) as GameObject;
+			clone = Instantiate(HUnit, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z - 1), Quaternion.identity) as GameObject;
 			IncomeMan.GetComponent<Income>().Spend(HCost);
 		}
 	}
