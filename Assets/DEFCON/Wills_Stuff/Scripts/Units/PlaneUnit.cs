@@ -145,7 +145,7 @@ public class PlaneUnit : MonoBehaviour {
                     if (hit.collider.tag == "Ground")
                     {
                         // Move unit cooooooool
-                        Agent.SetDestination(hit.point);
+                        Agent.SetDestination(new Vector3(hit.point.x, hit.point.y + 5, hit.point.z));
                     }
                 }
             }
