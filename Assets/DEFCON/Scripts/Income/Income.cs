@@ -10,7 +10,7 @@ public class Income : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-        income = 1000;
+        income = 2000;
 	} 
 
 	//attach to money making sources

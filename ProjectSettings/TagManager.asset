@@ -21,6 +21,8 @@ TagManager:
   - EnemyUnitPlane
   - PlayerUnitTank
   - PlayerUnitPlane
+  - Withdraw
+  - Dominate
   layers:
   - Default
   - TransparentFX

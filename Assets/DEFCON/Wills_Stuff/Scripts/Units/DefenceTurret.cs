@@ -157,7 +157,7 @@ public class DefenceTurret : MonoBehaviour {
     {
         //int LayerMask = 1 << 11;
 
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, 6.0f);
+        Collider[] hits = Physics.OverlapSphere(this.transform.position, 10.0f);
 
         // Detect unit and shoot if enemy
         for (int i = 0; i < hits.Length; i++)
@@ -180,11 +180,11 @@ public class DefenceTurret : MonoBehaviour {
             GameObject clone = Instantiate(Bullet, this.transform.position, Quaternion.identity) as GameObject;
             clone.gameObject.GetComponent<Bullet>().LerpToTarget(c);
             if (c.gameObject.tag == "PlayerUnit")
-                c.gameObject.GetComponent<TransportUnit>().TakeDamage(10, Group);
+                c.gameObject.GetComponent<TransportUnit>().TakeDamage(15, Group);
             if (c.gameObject.tag == "PlayerUnitPlane")
-                c.gameObject.GetComponent<PlaneUnit>().TakeDamage(10, Group);
+                c.gameObject.GetComponent<PlaneUnit>().TakeDamage(15, Group);
             if (c.gameObject.tag == "PlayerUnitTank")
-                c.gameObject.GetComponent<TankUnit>().TakeDamage(10, Group);
+                c.gameObject.GetComponent<TankUnit>().TakeDamage(15, Group);
             lastShot = Time.time + fireRate;
         }
     }

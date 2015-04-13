@@ -179,7 +179,7 @@ public class EnemyTankUnit : MonoBehaviour {
         {
             GameObject clone = Instantiate(Bullet, this.transform.position, Quaternion.identity) as GameObject;
             clone.gameObject.GetComponent<Bullet>().LerpToTarget(c);
-            c.gameObject.GetComponent<TankUnit>().TakeDamage(5, Group);
+            c.gameObject.GetComponent<TankUnit>().TakeDamage(10, Group);
             lastShot = Time.time + fireRate;
         }
     }

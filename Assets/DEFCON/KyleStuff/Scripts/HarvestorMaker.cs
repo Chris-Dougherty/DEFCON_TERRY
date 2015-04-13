@@ -35,7 +35,7 @@ public class HarvestorMaker : MonoBehaviour
 
     public void SpawnTUnit()
     {
-        if (IncomeMan.GetComponent<Income>().income >= 0 + HCost)
+        if (IncomeMan.GetComponent<Income>().income >= 0 + TPortCost)
         {
             GameObject clone;
             clone = Instantiate(TPortUnit, new Vector3(this.transform.position.x, this.transform.position.y + 5, this.transform.position.z - 1), Quaternion.identity) as GameObject;

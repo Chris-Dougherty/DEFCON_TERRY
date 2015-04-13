@@ -157,7 +157,7 @@ public class PlaneUnit : MonoBehaviour {
     {
         //int LayerMask = 1 << 11;
 
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, 5.0f);
+        Collider[] hits = Physics.OverlapSphere(this.transform.position, 10.0f);
 
         // Detect unit and shoot if enemy
         for (int i = 0; i < hits.Length; i++)
@@ -179,7 +179,10 @@ public class PlaneUnit : MonoBehaviour {
         {
             GameObject clone = Instantiate(Bullet, this.transform.position, Quaternion.identity) as GameObject;
             clone.gameObject.GetComponent<Bullet>().LerpToTarget(c);
-            c.gameObject.GetComponent<EnemyPlaneUnit>().TakeDamage(5);
+            if (c.gameObject.tag == "EnemyUnit")
+                c.gameObject.GetComponent<DefenceTurret>().TakeDamage(10);
+            if (c.gameObject.tag == "EnemyUnitPlane")
+                c.gameObject.GetComponent<EnemyPlaneUnit>().TakeDamage(10);
             lastShot = Time.time + fireRate;
         }
     }
